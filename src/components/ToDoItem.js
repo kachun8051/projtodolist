@@ -9,8 +9,8 @@ const ToDoItem = (props) => {
         {props.info.seq + '. ' + props.info.value}
       </p> 
       <div>
-        <button onClick={() => props.editItem(props.info.id)}>Edit</button>
-        <button onClick={() => props.deleteItem(props.info.id)}>Delete</button>
+        <button className='ToDoItemBtn' onClick={() => props.editItem(props.info.id)}>Edit</button>
+        <button className='ToDoItemBtn' onClick={() => props.deleteItem(props.info.id)}>Delete</button>
       </div>
     </div>
   );

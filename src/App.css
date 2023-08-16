@@ -42,9 +42,21 @@ h1 {
   background: blueviolet;
   border: 1px solid white;
   color: white;
-  padding: 0.5rem;
-  height: fit-content;
+  /* padding: 0.5rem; */
+  /* height: fit-content; */
+  width: 50px;
   cursor: pointer;
+}
+
+.ToDoItemBtn {
+  background: blueviolet;
+  border: 1px solid white;
+  color: white;
+  /* padding: 0.5rem; */
+  /* height: fit-content; */
+  width: 50px;
+  cursor: pointer;
+  margin: 5px 5px;
 }
 
 .ToDoEdit {

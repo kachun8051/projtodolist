@@ -9,11 +9,19 @@ const ToDoEdit = (props) => {
     props.editItem(props.info.id, input);
   };
 
+  const handleOnFocus = (e) => {
+    e.target.select();
+  };
+
   return (
     <form onSubmit={setInputData} className="ToDoEdit">
       <input style={{ backgroundColor: 'white' }} type="text" 
-        value={input} onChange={ (e) => setInput(e.target.value)} />
-      <button type="submit" className=""> Update </button>
+        value={input} 
+        onChange={ (e) => setInput(e.target.value)}
+        onFocus={ handleOnFocus }
+        autoFocus = {true}
+      />
+      <button type="submit" className="ToDoItemBtn"> Update </button>
     </form>
   );
 }
