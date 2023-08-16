@@ -7,6 +7,7 @@ import { v4 } from "uuid";
 const ToDo = () => {
 
     const [ data, setData ] = useState([]);
+    //const [ completed, setCompleted ] = useState("");
 
     const addToDoItem = (x) => {
         let newseq = 0;
@@ -37,6 +38,13 @@ const ToDo = () => {
         setData( data.filter( (data) => data.id !== id ) );
       }
 
+      const completeToDoItem = (id) => {
+
+        setData( 
+            data.map((x) => (x.id === id ? {...x, completed: !x.completed}: x))
+          );
+      }
+
     return (
         <div className="ToDoBox">
             <h1>To Do List 2025</h1>
@@ -45,8 +53,8 @@ const ToDo = () => {
             {
                 data.map( (x) => (
                 x.editMode ? 
-                (<ToDoEdit key={x.id} info={x} editItem={editToDoData} />) : 
-                (<ToDoItem key={x.id} info={x} editItem={editToDoItem} 
+                (<ToDoEdit key={x.id} info={x} completeItem={completeToDoItem} editItem={editToDoData} />) : 
+                (<ToDoItem key={x.id} info={x}  completeItem={completeToDoItem} editItem={editToDoItem} 
                     deleteItem={deleteToDoItem} ></ToDoItem>)          
                 )) 
             }

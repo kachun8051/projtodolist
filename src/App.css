@@ -67,3 +67,8 @@ h1 {
   margin: 1rem 0;
   cursor: pointer;
 }
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
+}
