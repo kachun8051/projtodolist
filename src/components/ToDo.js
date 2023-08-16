@@ -7,7 +7,6 @@ import { v4 } from "uuid";
 const ToDo = () => {
 
     const [ data, setData ] = useState([]);
-    //const [ completed, setCompleted ] = useState("");
 
     const addToDoItem = (x) => {
         let newseq = 0;
