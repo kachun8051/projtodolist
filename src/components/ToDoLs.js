@@ -11,10 +11,22 @@ const ToDoLs = () => {
     useEffect(
         () => {
             // retrieve the data from local storage
-            const savedData = JSON.parse(localStorage.getItem("tododata")) || [];
+            let savedData = [];
+            try {
+              savedData = JSON.parse(localStorage.getItem("tododata"));
+            }
+            catch (error) {
+              console.error(error);
+              savedData = []
+            }
             setData(savedData);
         }, []
     );
+
+    const clearLS = () => {
+      localStorage.setItem("tododata", "[]");
+      setData([]);
+    }
 
     const addToDoItem = (x) => {
         let newseq = 0;
@@ -59,16 +71,17 @@ const ToDoLs = () => {
   return (
     <div className="ToDoBox">
         <h1>To Do List 2025</h1>
-            <ToDoAdd action={ addToDoItem }></ToDoAdd>
-            { console.log(data) }
-            {
-                data.map( (x) => (
-                x.editMode ? 
-                (<ToDoEdit key={x.id} info={x} completeItem={completeToDoItem} editItem={editToDoData} />) : 
-                (<ToDoItem key={x.id} info={x}  completeItem={completeToDoItem} editItem={editToDoItem} 
-                    deleteItem={deleteToDoItem} ></ToDoItem>)          
-                )) 
-            }
+        <ToDoAdd action={ addToDoItem }></ToDoAdd>
+        { console.log(data) }
+        {
+            data.map( (x) => (
+              x.editMode ? 
+              (<ToDoEdit key={x.id} info={x} completeItem={completeToDoItem} editItem={editToDoData} />) : 
+              (<ToDoItem key={x.id} info={x}  completeItem={completeToDoItem} editItem={editToDoItem} 
+                deleteItem={deleteToDoItem} ></ToDoItem>)          
+            )) 
+        }
+        <button onClick={clearLS}>Clear Local Storage</button>
     </div>
   )
 }
